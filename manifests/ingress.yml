@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata: 
+  name: wisecow-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "buildwithsanchit.me"
+      http: 
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: wisecow-service
+                port:
+                  number: 4499
+        tls:
+          - hosts:
+            - buildwithsanchit.me
+            secretName: wisecow-tls
