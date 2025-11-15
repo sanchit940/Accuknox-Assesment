@@ -1,0 +1,20 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorPolicy
+metadata:
+  name: only-allow-nginx-exec
+spec:
+  selector:
+    matchLabels:
+      app: wisecow
+  file:
+    matchDirectories:
+    - dir: /
+      recursive: true  
+  process:
+    matchPaths:
+    - path: /app/wisecow
+    - path: /bin/bash
+  action:
+    Allow
+
+ 
