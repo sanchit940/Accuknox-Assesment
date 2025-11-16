@@ -10,14 +10,12 @@ on:
             - 'Dockerfile'
             
 jobs:
-    checkout-the-code:
+    build-and-push:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
-              with:
-                submodules: 'recursive' #fetch code recursively
-                fetch-depth: 0
+              uses: actions/checkout@v5
+             
 
             - name: Give permissions to Wisecow Script
               run: chmod +x ./wisecow/wisecow.sh
